@@ -1,5 +1,7 @@
-import { sayHello } from './import-1';
+const canvas = document.querySelector('canvas');
 
-console.log('HELLO, WORLD');
+canvas.width = 15 * 45;
+canvas.height = 10 * 45;
 
-sayHello();
+const context = canvas.getContext('2d');
+context.fillText('HELLO WORLD', 100, 100);
