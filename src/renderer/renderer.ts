@@ -3,13 +3,13 @@ import Game from '../game/game';
 export default class Renderer {
   private game: Game;
   private canvas: HTMLCanvasElement;
-  
+
   constructor(options: { game: Game, canvas: HTMLCanvasElement }) {
     this.game = options.game;
     this.canvas = options.canvas;
   }
-  
-  start(): void {
+
+  public start(): void {
     this.width = 15 * 45;
     this.height = 10 * 45;
 
