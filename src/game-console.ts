@@ -2,8 +2,9 @@ import Game from './game/game';
 import Renderer from './renderer/renderer';
 
 export default class GameConsole {
-  game: Game;
-  renderer: Renderer;
+  
+  private game: Game;
+  private renderer: Renderer;
 
   constructor() {
     const canvas = document.querySelector('canvas');
