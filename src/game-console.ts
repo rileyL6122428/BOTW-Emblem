@@ -2,21 +2,21 @@ import Game from './game/game';
 import Renderer from './renderer/renderer';
 
 export default class GameConsole {
-  
+
   private game: Game;
   private renderer: Renderer;
 
   constructor() {
     const canvas = document.querySelector('canvas');
-    
+
     this.game = new Game();
     this.renderer = new Renderer({
-      game: this.game,
       canvas,
+      game: this.game,
     });
   }
 
-  play(): void {
+  public play(): void {
     this.game.start();
     this.renderer.start();
   }
