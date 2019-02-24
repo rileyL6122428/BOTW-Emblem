@@ -29,8 +29,6 @@ export default class GameRenderer extends Renderer<GameEvent, Game> {
   }
 
   public render(): void {
-    // TODO
-
     const context = this.canvas.getContext('2d');
     context.fillText('HELLO WORLD', 100, 100);
   }

@@ -15,7 +15,6 @@ export default class Game implements Renderable<GameEvent> {
   }
 
   public start(): void {
-    // Todo
     this.eventEmitter.next('start');
   }
 }
