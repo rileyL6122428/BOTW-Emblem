@@ -21,6 +21,5 @@ export default class GameConsole {
   public play(): void {
     this.renderer.initialize();
     this.game.start();
-    // this.renderer.start();
   }
 }
