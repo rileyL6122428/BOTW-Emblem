@@ -1,5 +1,5 @@
 import Game from '~/game/game';
-import Renderer from '~/renderer/display';
+import Renderer from '~/renderer/game-renderer';
 
 export default class GameConsole {
 
@@ -8,16 +8,19 @@ export default class GameConsole {
 
   constructor() {
     const canvas = document.querySelector('canvas');
+    const frameRate = 60;
 
     this.game = new Game();
     this.renderer = new Renderer({
       canvas,
       game: this.game,
+      frameRate,
     });
   }
 
   public play(): void {
+    this.renderer.initialize();
     this.game.start();
-    this.renderer.start();
+    // this.renderer.start();
   }
 }

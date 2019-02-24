@@ -7,7 +7,7 @@ export abstract class Renderer<E, T extends Renderable<E>> {
   public abstract render(): void;
 
   public initialize(): void {
-    this.renderable.eventEmitter.subscribe((event) => {
+    this.renderable.eventListener.subscribe((event: E) => {
       this.handle(event);
     });
   }

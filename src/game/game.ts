@@ -1,10 +1,21 @@
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 import { Renderable } from '~/renderer/renderable';
 
 export type GameEvent = 'start';
 
 export default class Game implements Renderable<GameEvent> {
 
-  public eventEmitter: Observable<GameEvent>;
+  public eventListener: Observable<GameEvent>;
+  private eventEmitter: Observer<GameEvent>;
 
+  constructor() {
+    this.eventListener = Observable.create(
+      (observer: Observer<GameEvent>) => this.eventEmitter = observer
+    );
+  }
+
+  public start(): void {
+    // Todo
+    this.eventEmitter.next('start');
+  }
 }
