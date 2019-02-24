@@ -1,5 +1,5 @@
 import Game from '~/game/game';
-import Renderer from '~/renderer/renderer';
+import Renderer from '~/renderer/display';
 
 export default class GameConsole {
 

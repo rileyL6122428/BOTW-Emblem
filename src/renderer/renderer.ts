@@ -1,50 +1,14 @@
-import Game from '~/game/game';
+import { Renderable } from './renderable';
 
-export default class Renderer {
-  private game: Game;
-  private canvas: HTMLCanvasElement;
+export abstract class Renderer<E, T extends Renderable<E>> {
+  protected renderable: T;
 
-  private currentRenderer: Renderer;
+  public abstract handle(event: E): void;
+  public abstract render(): void;
 
-  constructor(options: { game: Game, canvas: HTMLCanvasElement }) {
-    this.game = options.game;
-    this.canvas = options.canvas;
-  }
-
-  public start(): void {
-    this.startDrawLoop();
-
-    this.game.onChanges.subscribe((gameEvent) => {
-      this.handle(gameEvent);
+  public initialize(): void {
+    this.renderable.eventEmitter.subscribe((event) => {
+      this.handle(event);
     });
-    // this.width = 15 * 45;
-    // this.height = 10 * 45;
-
-    // const context = this.canvas.getContext('2d');
-    // context.fillText('HELLO WORLD', 100, 100);
-  }
-
-  private startDrawLoop(): void {
-    setInterval(() => {
-      if (this.activeRenderer) {
-        this.activeRenderer.render();
-      }
-    }, this.frameRate);
-  }
-
-  private handle(gameEvent): void {
-    switch (gameEvent) {
-      case gameEvent.BEGIN_CHAPTER:
-        this.currentRenderer = this.getChapterRenderer(gameEvent.chapterId);
-        break;
-    }
-  }
-
-  set width(pixels: number) {
-    this.canvas.width = pixels;
-  }
-
-  set height(pixels: number) {
-    this.canvas.height = pixels;
   }
 }

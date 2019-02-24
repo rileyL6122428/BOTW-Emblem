@@ -1,10 +1,10 @@
 import { Observable } from 'rxjs';
+import { Renderable } from '~/renderer/renderable';
 
-export default class Game {
+export type GameEvent = 'start';
 
-  public onChanges: Observable<any>;
+export default class Game implements Renderable<GameEvent> {
 
-  public start(): void {
+  public eventEmitter: Observable<GameEvent>;
 
-  }
 }
